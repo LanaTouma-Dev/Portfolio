@@ -1,0 +1,78 @@
+<section id="projects" class="projects-section">
+  <!-- Decorative elements -->
+  <div class="projects-decoration decoration-1"></div>
+  <div class="projects-decoration decoration-2"></div>
+
+  <div class="projects-container">
+    <div class="projects-header">
+      <h2 class="section-title">My Projects</h2>
+      <div class="title-decoration"></div>
+      <p class="section-subtitle">A showcase of my recent work and personal projects</p>
+    </div>
+
+    <!-- Featured Project -->
+    <div class="featured-project" *ngIf="featuredProject">
+      <div class="featured-content">
+        <span class="featured-label">Featured Project</span>
+        <h3 class="featured-title">{{featuredProject.title}}</h3>
+        <p class="featured-description">{{featuredProject.description}}</p>
+        <div class="featured-tech">
+          <span class="tech-tag" *ngFor="let tech of featuredProject.technologies">{{tech}}</span>
+        </div>
+        <div class="featured-links">
+          <a *ngIf="featuredProject.liveUrl" [href]="featuredProject.liveUrl" target="_blank" class="project-link demo-link">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+          <a *ngIf="featuredProject.githubUrl" [href]="featuredProject.githubUrl" target="_blank" class="project-link github-link">
+            <i class="fab fa-github"></i> View Code
+          </a>
+        </div>
+      </div>
+      <div class="featured-image">
+        <div class="image-wrapper">
+          <img [src]="featuredProject.imageUrl" [alt]="featuredProject.title">
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects">
+        <div class="project-image">
+          <img [src]="project.imageUrl" [alt]="project.title">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" class="project-link" title="View Live Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" class="project-link" title="View Source Code">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">{{project.title}}</h3>
+          <p class="project-description">{{project.description}}</p>
+          <div class="project-tech">
+            <span class="tech-tag" *ngFor="let tech of project.technologies">{{tech}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="projects.length === 0 && !featuredProject" class="empty-state">
+      <p>More projects coming soon!</p>
+    </div>
+
+    <!-- View More Button -->
+    <div class="view-more" *ngIf="projects.length > 0">
+      <a href="https://github.com/yourusername" target="_blank" class="view-more-button">
+        View More Projects
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
