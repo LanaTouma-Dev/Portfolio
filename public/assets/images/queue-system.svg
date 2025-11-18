@@ -1,0 +1,25 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9CAD8C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F6B0BB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#grad3)"/>
+  <g transform="translate(400, 200)">
+    <!-- Queue Icon -->
+    <circle cx="-60" cy="0" r="25" fill="white" opacity="0.9"/>
+    <circle cx="0" cy="0" r="25" fill="white" opacity="0.9"/>
+    <circle cx="60" cy="0" r="25" fill="white" opacity="0.9"/>
+    <!-- Numbers -->
+    <text x="-60" y="8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#7E8C69" text-anchor="middle">1</text>
+    <text x="0" y="8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#7E8C69" text-anchor="middle">2</text>
+    <text x="60" y="8" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#7E8C69" text-anchor="middle">3</text>
+  </g>
+  <text x="400" y="350" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="white" text-anchor="middle">
+    Customer Queue Management System
+  </text>
+  <text x="400" y="385" font-family="Inter, Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.9">
+    Replace this placeholder with your project screenshot
+  </text>
+</svg>

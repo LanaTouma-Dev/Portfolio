@@ -1,0 +1,20 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9CAD8C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7E8C69;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgGrad)" rx="10"/>
+  <g transform="translate(200, 150)">
+    <!-- User Icon -->
+    <circle cx="0" cy="0" r="50" fill="white" opacity="0.9"/>
+    <path d="M-60,90 Q-60,40 0,40 Q60,40 60,90" fill="white" opacity="0.9"/>
+  </g>
+  <text x="200" y="300" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600" fill="white" text-anchor="middle">
+    Your Photo Here
+  </text>
+  <text x="200" y="330" font-family="Inter, Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.9">
+    Replace with your professional photo
+  </text>
+</svg>

@@ -30,7 +30,7 @@
       </div>
       <div class="featured-image">
         <div class="image-wrapper">
-          <img [src]="featuredProject.imageUrl" [alt]="featuredProject.title">
+          <img [src]="featuredProject.imageUrl" [alt]="featuredProject.title" loading="lazy">
           <div class="image-overlay"></div>
         </div>
       </div>
@@ -40,7 +40,7 @@
     <div class="projects-grid">
       <div class="project-card" *ngFor="let project of projects">
         <div class="project-image">
-          <img [src]="project.imageUrl" [alt]="project.title">
+          <img [src]="project.imageUrl" [alt]="project.title" loading="lazy">
           <div class="project-overlay">
             <div class="project-links">
               <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank" class="project-link" title="View Live Demo">

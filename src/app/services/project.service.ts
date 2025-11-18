@@ -12,7 +12,7 @@ export class ProjectService {
       title: 'Enterprise Messaging Platform',
       description: 'A bulk SMS management system handling high-volume message queuing, delivery tracking, and analytics. Built for telecom scale with support for thousands of concurrent messages.',
       technologies: ['Angular', '.NET Core', 'SQL Server', 'RabbitMQ', 'Docker'],
-      imageUrl: 'assets/images/messaging-platform.jpg',
+      imageUrl: 'assets/images/messaging-platform.svg',
       githubUrl: 'https://github.com/yourusername/messaging-platform',
       featured: true,
       category: 'web'
@@ -22,7 +22,7 @@ export class ProjectService {
       title: 'AI Text Analytics Dashboard',
       description: 'Text analysis tool that processes customer messages using NLP techniques. Provides sentiment analysis, keyword extraction, and trend detection for business intelligence.',
       technologies: ['Django', 'Angular', 'PostgreSQL', 'scikit-learn', 'NLTK'],
-      imageUrl: 'assets/images/text-analytics.jpg',
+      imageUrl: 'assets/images/text-analytics.svg',
       githubUrl: 'https://github.com/yourusername/text-analytics',
       featured: false,
       category: 'web'
@@ -32,7 +32,7 @@ export class ProjectService {
       title: 'Customer Queue Management System',
       description: 'Digital queue system for service centers with real-time updates, SMS notifications, and analytics dashboard. Reduces wait times and improves customer experience.',
       technologies: ['Angular', '.NET Core', 'SignalR', 'SQL Server', 'Docker'],
-      imageUrl: 'assets/images/queue-system.jpg',
+      imageUrl: 'assets/images/queue-system.svg',
       githubUrl: 'https://github.com/yourusername/queue-management',
       featured: false,
       category: 'web'
@@ -42,7 +42,7 @@ export class ProjectService {
       title: 'Loyalty Points System',
       description: 'B2B loyalty program platform allowing businesses to create point-based reward systems for their customers. Includes transaction tracking, redemption management, and reporting.',
       technologies: ['Angular', 'Django', 'MySQL', 'Redis', 'Docker'],
-      imageUrl: 'assets/images/loyalty-system.jpg',
+      imageUrl: 'assets/images/loyalty-system.svg',
       githubUrl: 'https://github.com/yourusername/loyalty-system',
       featured: false,
       category: 'web'

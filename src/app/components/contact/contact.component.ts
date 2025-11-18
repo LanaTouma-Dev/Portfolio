@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EmailService } from '../../services/email.service';
 
 interface FormData {
   name: string;
@@ -32,6 +33,8 @@ export class ContactComponent {
   isSubmitting = false;
   formStatus: FormStatus | null = null;
 
+  constructor(private emailService: EmailService) {}
+
   async onSubmit() {
     if (this.isSubmitting) return;
 
@@ -39,22 +42,36 @@ export class ContactComponent {
     this.formStatus = null;
 
     try {
-      // TODO: Replace with your actual form submission logic
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulated API call
+      // Check if EmailJS is configured
+      if (!this.emailService.isConfigured()) {
+        this.formStatus = {
+          success: false,
+          message: 'Email service is not configured yet. Please set up EmailJS credentials.'
+        };
+        return;
+      }
 
-      this.formStatus = {
-        success: true,
-        message: 'Thank you for your message! I will get back to you soon.'
-      };
+      // Send email using EmailJS
+      const result = await this.emailService.sendEmail({
+        from_name: this.formData.name,
+        from_email: this.formData.email,
+        subject: this.formData.subject,
+        message: this.formData.message
+      });
 
-      // Reset form
-      this.formData = {
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      };
+      this.formStatus = result;
+
+      // Reset form only if successful
+      if (result.success) {
+        this.formData = {
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        };
+      }
     } catch (error) {
+      console.error('Form submission error:', error);
       this.formStatus = {
         success: false,
         message: 'Sorry, there was an error sending your message. Please try again later.'

@@ -1,0 +1,20 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F1C8CB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9CAD8C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#grad4)"/>
+  <g transform="translate(400, 200)">
+    <!-- Star Icon (Loyalty) -->
+    <path d="M0,-50 L15,-10 L55,-10 L25,15 L35,55 L0,30 L-35,55 L-25,15 L-55,-10 L-15,-10 Z"
+          fill="white" opacity="0.9"/>
+  </g>
+  <text x="400" y="350" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600" fill="white" text-anchor="middle">
+    Loyalty Points System
+  </text>
+  <text x="400" y="385" font-family="Inter, Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.9">
+    Replace this placeholder with your project screenshot
+  </text>
+</svg>

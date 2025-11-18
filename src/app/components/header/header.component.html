@@ -1,16 +1,22 @@
-<nav class="nav-container" [class.scrolled]="isScrolled">
-  <a href="#" class="nav-logo" (click)="scrollToSection('hero'); $event.preventDefault()">Lana Touma</a>
-  
+<nav class="nav-container" [class.scrolled]="isScrolled" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" (click)="scrollToSection('hero'); $event.preventDefault()" aria-label="Lana Touma - Home">Lana Touma</a>
+
   <!-- Desktop Navigation -->
-  <div class="nav-links" [class.mobile-menu-open]="isMenuOpen">
-    <a href="#about" class="nav-link" (click)="scrollToSection('about'); $event.preventDefault()">About</a>
-    <a href="#projects" class="nav-link" (click)="scrollToSection('projects'); $event.preventDefault()">Projects</a>
-    <a href="#skills" class="nav-link" (click)="scrollToSection('skills'); $event.preventDefault()">Skills</a>
-    <a href="#contact" class="nav-link" (click)="scrollToSection('contact'); $event.preventDefault()">Contact</a>
+  <div class="nav-links" [class.mobile-menu-open]="isMenuOpen" role="list">
+    <a href="#about" class="nav-link" (click)="scrollToSection('about'); $event.preventDefault()" role="listitem" aria-label="Navigate to About section">About</a>
+    <a href="#projects" class="nav-link" (click)="scrollToSection('projects'); $event.preventDefault()" role="listitem" aria-label="Navigate to Projects section">Projects</a>
+    <a href="#skills" class="nav-link" (click)="scrollToSection('skills'); $event.preventDefault()" role="listitem" aria-label="Navigate to Skills section">Skills</a>
+    <a href="#contact" class="nav-link" (click)="scrollToSection('contact'); $event.preventDefault()" role="listitem" aria-label="Navigate to Contact section">Contact</a>
   </div>
 
   <!-- Mobile Menu Button -->
-  <button class="mobile-menu-button" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen">
-    <span class="hamburger" [class.open]="isMenuOpen"></span>
+  <button
+    class="mobile-menu-button"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="isMenuOpen"
+    [attr.aria-label]="isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+    aria-controls="mobile-navigation">
+    <span class="hamburger" [class.open]="isMenuOpen" aria-hidden="true"></span>
+    <span class="sr-only">{{ isMenuOpen ? 'Close' : 'Open' }} menu</span>
   </button>
 </nav>
