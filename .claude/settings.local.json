@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "mcp__25552a50-d744-4e82-9cbc-309bb245fbc6__get_metadata",
+      "Read(//c/Users/Legion/Downloads/**)",
+      "Bash(unzip -o lana.zip -d lana_design)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

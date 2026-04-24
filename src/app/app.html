@@ -1,0 +1,268 @@
+<!-- Custom cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Star field canvas -->
+<canvas id="star-canvas"></canvas>
+
+<!-- Confetti canvas -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Toast -->
+<div class="toast" id="toast">✨ hello to you too!</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="pixel-icon" id="pixel-icon"></div>
+    Lana Touma
+  </a>
+  <ul class="nav-links" [class.is-open]="menuOpen()">
+    <li><a href="#about" (click)="closeMenu()">About</a></li>
+    <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+    <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+    <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+  </ul>
+  <button class="hamburger" (click)="toggleMenu()" [class.is-open]="menuOpen()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+
+  <!-- Floating sparkles -->
+  <div class="sparkle" style="left:72%;top:18%;font-size:18px;color:#F9A8D4;animation-duration:5s;animation-delay:0.5s;">✦</div>
+  <div class="sparkle" style="left:85%;top:38%;font-size:11px;color:#A78BFA;animation-duration:7s;animation-delay:1.2s;">✧</div>
+  <div class="sparkle" style="left:60%;top:72%;font-size:14px;color:#93C5FD;animation-duration:6s;animation-delay:0.8s;">✦</div>
+  <div class="sparkle" style="left:92%;top:24%;font-size:9px;color:#6EE7B7;animation-duration:8s;animation-delay:2s;">◆</div>
+  <div class="sparkle" style="left:40%;top:85%;font-size:16px;color:#F9A8D4;animation-duration:5.5s;animation-delay:1.5s;">✧</div>
+  <div class="sparkle" style="left:10%;top:65%;font-size:10px;color:#A78BFA;animation-duration:9s;animation-delay:0.3s;">✦</div>
+  <div class="sparkle" style="left:25%;top:30%;font-size:13px;color:#FDE68A;animation-duration:6.5s;animation-delay:2.5s;">✦</div>
+
+  <!-- Status badge -->
+  <div class="status-badge"><span class="status-dot"></span>Open to new opportunities</div>
+
+  <div class="hero-eyebrow">Full-Stack Developer</div>
+  <h1 class="hero-name" data-text="Lana&#10;Touma">Lana<br>Touma</h1>
+
+  <!-- Sticker -->
+  <div class="hero-sticker">
+    <div class="sticker-ring">
+      <div class="sticker-text">
+        <div class="sticker-center">she/her<br>✦<br>code witch</div>
+      </div>
+      <svg class="sticker-orbit" viewBox="0 0 140 140">
+        <defs><path id="circ" d="M 70,70 m -52,0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0"/></defs>
+        <text font-size="8" fill="rgba(249,168,212,0.55)" font-family="Space Grotesk,sans-serif" letter-spacing="5" font-weight="600">
+          <textPath href="#circ">FULL-STACK DEV · DESIGN NERD · </textPath>
+        </text>
+      </svg>
+    </div>
+  </div>
+
+  <p class="hero-subtitle"><span id="typewriter"></span><span class="typewriter-cursor"></span></p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View my work</a>
+    <a href="#contact" class="btn-ghost">Let's connect</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- MARQUEE 1 -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="accent">✦ Full-Stack Dev</span><span class="dot"> · </span><span>Angular</span><span class="dot"> · </span><span class="accent">Design-minded</span><span class="dot"> · </span><span>TypeScript</span><span class="dot"> · </span><span class="accent">✦ Code Witch</span><span class="dot"> · </span><span>Tailwind CSS</span><span class="dot"> · </span><span class="accent">Craft over Speed</span><span class="dot"> · </span><span>Open to work</span><span class="dot"> · </span><span class="accent">✦ Making things pretty</span><span class="dot"> · </span><span>Full-Stack Dev</span><span class="dot"> · </span><span class="accent">Angular</span><span class="dot"> · </span><span>Design-minded</span><span class="dot"> · </span><span class="accent">TypeScript</span><span class="dot"> · </span><span>✦ Code Witch</span><span class="dot"> · </span><span class="accent">Tailwind CSS</span><span class="dot"> · </span><span>Craft over Speed</span><span class="dot"> · </span><span class="accent">Open to work</span><span class="dot"> · </span><span>✦ Making things pretty</span><span class="dot"> · </span>
+  </div>
+</div>
+
+<!-- MARQUEE 2 (reverse) -->
+<div class="marquee-strip">
+  <div class="marquee-inner marquee-inner-reverse">
+    <span class="accent">✦ RxJS</span><span class="dot"> · </span><span>Node.js</span><span class="dot"> · </span><span class="accent">REST APIs</span><span class="dot"> · </span><span>Figma</span><span class="dot"> · </span><span class="accent">✦ Performance First</span><span class="dot"> · </span><span>Accessibility</span><span class="dot"> · </span><span class="accent">Clean Code</span><span class="dot"> · </span><span>Git</span><span class="dot"> · </span><span class="accent">✦ Angular Signals</span><span class="dot"> · </span><span>RxJS</span><span class="dot"> · </span><span class="accent">Node.js</span><span class="dot"> · </span><span>REST APIs</span><span class="dot"> · </span><span class="accent">Figma</span><span class="dot"> · </span><span>✦ Performance First</span><span class="dot"> · </span><span class="accent">Accessibility</span><span class="dot"> · </span><span>Clean Code</span><span class="dot"> · </span><span class="accent">Git</span><span class="dot"> · </span><span>✦ Angular Signals</span><span class="dot"> · </span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Who I am</div>
+    <h2 class="section-heading">Building things that <em>matter</em><br>with code that <em>sings</em></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm <strong>Lana Touma</strong> — a full-stack developer who believes the best products live at the intersection of technical rigor and thoughtful design. I write clean, scalable code and care deeply about the humans who use what I build.</p>
+        <p>When I'm not pushing commits, I'm probably <strong>redesigning something that didn't need redesigning</strong>, deep in a rabbit hole about typography, or brewing a perfect cup of tea.</p>
+        <p>I build fast, accessible web apps with Angular & TypeScript. I like hard problems and <strong>honest collaboration</strong>.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Projects shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50k</div>
+          <div class="stat-label">Lines committed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Cups of tea</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">What I know</div>
+    <h2 class="section-heading">Tech I <em>love</em> working with</h2>
+    <div class="skills-layout">
+      <div class="skill-group">
+        <div class="skill-group-name">Frontend</div>
+        <div class="skill-badges">
+          <span class="badge badge-purple">Angular</span>
+          <span class="badge badge-purple">TypeScript</span>
+          <span class="badge badge-purple">JavaScript</span>
+          <span class="badge badge-purple">HTML / CSS</span>
+          <span class="badge badge-purple">RxJS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Styling & Design</div>
+        <div class="skill-badges">
+          <span class="badge badge-pink">Tailwind CSS</span>
+          <span class="badge badge-pink">Modern CSS</span>
+          <span class="badge badge-pink">Figma</span>
+          <span class="badge badge-pink">UI / UX</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Backend & Tools</div>
+        <div class="skill-badges">
+          <span class="badge badge-blue">Node.js</span>
+          <span class="badge badge-blue">REST APIs</span>
+          <span class="badge badge-blue">Git</span>
+          <span class="badge badge-blue">Firebase</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Practices</div>
+        <div class="skill-badges">
+          <span class="badge badge-mint">Responsive Design</span>
+          <span class="badge badge-mint">Accessibility</span>
+          <span class="badge badge-mint">Performance</span>
+          <span class="badge badge-mint">Code Review</span>
+        </div>
+      </div>
+      <div class="currently-into">
+        <span class="currently-label">Currently into ✦</span>
+        <div class="currently-badges">
+          <span class="currently-badge">Angular Signals</span>
+          <span class="currently-badge">modern CSS</span>
+          <span class="currently-badge">accessible design</span>
+          <span class="currently-badge">matcha lattes</span>
+          <span class="currently-badge">TypeScript patterns</span>
+          <span class="currently-badge">Figma workflows</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Selected work</div>
+    <h2 class="section-heading">Projects I'm <em>proud of</em></h2>
+    <div class="projects-grid">
+
+      <div class="project-card card-1" data-tilt>
+        <span class="project-tag tag-1">Frontend</span>
+        <h3 class="project-title">Portfolio v2</h3>
+        <p class="project-desc">This very site. Built with Angular 19 and Tailwind CSS v4. Performance-first, design-minded, with buttery animations and zero compromise on accessibility.</p>
+        <div class="project-stack">
+          <span class="stack-pill">Angular</span>
+          <span class="stack-pill">Tailwind CSS</span>
+          <span class="stack-pill">TypeScript</span>
+        </div>
+        <a href="#" class="project-link">
+          View project
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card card-2" data-tilt>
+        <span class="project-tag tag-2">Full-Stack</span>
+        <h3 class="project-title">Task Flow</h3>
+        <p class="project-desc">A drag-and-drop task management app with real-time updates. Clean UX, reactive state, and seamless sync powered by Firebase and RxJS.</p>
+        <div class="project-stack">
+          <span class="stack-pill">Angular</span>
+          <span class="stack-pill">RxJS</span>
+          <span class="stack-pill">Firebase</span>
+        </div>
+        <a href="#" class="project-link">
+          View project
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card card-3" data-tilt>
+        <span class="project-tag tag-3">E-commerce</span>
+        <h3 class="project-title">Pixel Store</h3>
+        <p class="project-desc">A polished e-commerce frontend with smooth cart interactions, powerful filters, and pixel-perfect animations. Built around the user's journey.</p>
+        <div class="project-stack">
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">CSS</span>
+          <span class="stack-pill">REST API</span>
+        </div>
+        <a href="#" class="project-link">
+          View project
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="section-label">Let's talk</div>
+      <h2 class="section-heading">Got something <em>interesting</em>?</h2>
+      <p class="contact-para">I'm always open to hearing about ambitious projects, interesting collaborations, or just a good conversation about tech and design. My inbox is a nice place — come say hi.</p>
+      <div class="contact-links">
+        <a href="mailto:lana@example.com" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 4l6.5 5 6.5-5M1.5 4h13v9h-13V4z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Email
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 7v4.5M4.5 5v.01M7.5 11.5V9a1.5 1.5 0 013 0v2.5M7.5 9v2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/lana-touma" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C4.1 1 1 4.1 1 8c0 3.1 2 5.7 4.8 6.6.4.1.5-.2.5-.4V13c-2 .4-2.5-.5-2.7-1-.1-.2-.5-.8-.8-1-.3-.1-.7-.4 0-.4.6 0 1.1.6 1.2.8.7 1.2 1.8 1 2.3.7.1-.5.3-.9.5-1.1-1.7-.2-3.4-.9-3.4-3.8 0-.8.3-1.5.8-2.1-.1-.2-.3-1 .1-2.1 0 0 .6-.2 2.1.8.6-.2 1.3-.3 2-.3s1.3.1 2 .3c1.4-1 2.1-.8 2.1-.8.4 1.1.2 1.9.1 2.1.5.5.8 1.2.8 2.1 0 2.9-1.8 3.6-3.5 3.8.3.2.5.7.5 1.4v2.1c0 .2.1.5.5.4C13 13.7 15 11.1 15 8c0-3.9-3.1-7-7-7z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Lana Touma — 2026</span>
+  <span>Made with <span class="footer-heart">✦</span> and too much matcha</span>
+</footer>
