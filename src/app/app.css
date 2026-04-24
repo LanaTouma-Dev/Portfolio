@@ -579,9 +579,19 @@ section { position: relative; z-index: 1; }
 .card-1::before { background: linear-gradient(90deg, var(--purple), var(--pink)); }
 .card-2::before { background: linear-gradient(90deg, var(--blue), var(--mint)); }
 .card-3::before { background: linear-gradient(90deg, var(--pink), var(--yellow)); }
+.card-4::before { background: linear-gradient(90deg, var(--mint), var(--blue)); }
 .card-1:hover { box-shadow: 0 20px 60px rgba(167,139,250,0.18); }
 .card-2:hover { box-shadow: 0 20px 60px rgba(147,197,253,0.18); }
 .card-3:hover { box-shadow: 0 20px 60px rgba(249,168,212,0.18); }
+.card-4:hover { box-shadow: 0 20px 60px rgba(110,231,183,0.18); }
+
+.project-tag.tag-4 { color: var(--mint); background: rgba(110,231,183,0.12); }
+
+.project-img {
+  width: 100%; height: 180px; object-fit: cover;
+  border-radius: 12px; margin-bottom: 20px;
+  border: 1px solid var(--glass-border);
+}
 
 .project-tag {
   display: inline-block; font-size: 0.68rem; font-weight: 600;
@@ -702,7 +712,6 @@ footer .footer-heart {
 ══════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  .projects-grid { grid-template-columns: 1fr 1fr; }
   .hero-sticker { right: 20px; }
 }
 
@@ -743,7 +752,7 @@ footer .footer-heart {
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
 
   /* Projects */
-  .projects-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; gap: 16px; }
 
   /* Footer */
   footer {
