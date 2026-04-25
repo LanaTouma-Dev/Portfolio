@@ -29,25 +29,22 @@ body {
   body { cursor: auto; }
 }
 
-/* ─── CUSTOM CURSOR ──────────────────────────────── */
-#cursor-dot {
-  position: fixed; width: 10px; height: 10px;
-  background: var(--purple); border-radius: 50%;
+/* ─── MAGICAL GIRL WAND CURSOR ───────────────────── */
+#cursor-wand {
+  position: fixed;
+  width: 44px; height: 44px;
   pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, background 0.2s;
-  mix-blend-mode: screen;
-}
-#cursor-ring {
-  position: fixed; width: 32px; height: 32px;
-  border: 1.5px solid rgba(167,139,250,0.5);
-  border-radius: 50%; pointer-events: none; z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
+  /* offset so the star tip sits exactly at mouse hotspot */
+  transform: translate(-10px, -10px);
+  filter: drop-shadow(0 0 5px #A78BFA) drop-shadow(0 0 10px rgba(167,139,250,0.4));
+  transition: filter 0.2s ease, transform 0.15s ease;
+  will-change: left, top;
 }
 
+#cursor-wand:hover { pointer-events: none; }
+
 @media (hover: none) {
-  #cursor-dot, #cursor-ring { display: none; }
+  #cursor-wand { display: none; }
 }
 
 /* ─── CANVAS ─────────────────────────────────────── */
@@ -694,17 +691,20 @@ footer .footer-heart {
   pointer-events: none;
 }
 
-/* ─── TRAIL DOTS ─────────────────────────────────── */
-.trail-dot {
-  position: fixed; width: 5px; height: 5px;
-  border-radius: 50%; background: var(--purple);
+/* ─── SPARKLE TRAIL ──────────────────────────────── */
+.trail-spark {
+  position: fixed;
   pointer-events: none; z-index: 9997;
+  font-size: 13px; line-height: 1;
   transform: translate(-50%, -50%);
-  animation: trailFade 0.7s forwards;
+  animation: sparkFloat 0.85s ease-out forwards;
+  text-shadow: 0 0 6px currentColor;
+  user-select: none;
 }
-@keyframes trailFade {
-  0%   { opacity: 0.8; transform: translate(-50%,-50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%,-50%) scale(0.2); }
+@keyframes sparkFloat {
+  0%   { opacity: 1;   transform: translate(-50%, -50%) scale(1)   rotate(0deg); }
+  60%  { opacity: 0.7; transform: translate(-50%, calc(-50% - 18px)) scale(0.8) rotate(20deg); }
+  100% { opacity: 0;   transform: translate(-50%, calc(-50% - 34px)) scale(0.2) rotate(45deg); }
 }
 
 /* ══════════════════════════════════════════════════

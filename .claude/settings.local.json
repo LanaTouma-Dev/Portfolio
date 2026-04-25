@@ -10,7 +10,8 @@
       "Bash(mv \"BMS 2.jpg\" bms2.jpg)",
       "Bash(mv \"BMS 3.jpg\" bms3.jpg)",
       "Bash(mv \"PILLPAL1.jpg\" pillpal1.jpg)",
-      "Bash(mv \"PILLPAL2.jpg\" pillpal2.jpg)"
+      "Bash(mv \"PILLPAL2.jpg\" pillpal2.jpg)",
+      "Bash(npm start *)"
     ]
   }
 }

@@ -104,57 +104,57 @@ export class App {
   private initCursor() {
     if (window.matchMedia('(hover: none)').matches) return;
 
-    const dot = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    if (!dot || !ring) return;
+    const wand = document.getElementById('cursor-wand');
+    if (!wand) return;
 
-    let mx = 0, my = 0, rx = 0, ry = 0;
+    const starFill = wand.querySelector('.wand-star-fill') as SVGElement | null;
+    const SPARKLES = ['✦', '✧', '⋆', '✸', '✺'];
+    const COLORS = ['#A78BFA', '#F9A8D4', '#93C5FD', '#6EE7B7', '#FDE68A'];
+    let mx = 0, my = 0, lastTrail = 0;
 
+    // Follow cursor instantly
     document.addEventListener('mousemove', (e: MouseEvent) => {
       mx = e.clientX; my = e.clientY;
-      dot.style.left = mx + 'px';
-      dot.style.top = my + 'px';
-      spawnTrail(mx, my);
+      wand.style.left = mx + 'px';
+      wand.style.top = my + 'px';
+      spawnSpark(mx, my);
     });
 
-    function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
-
-    function animRing() {
-      rx = lerp(rx, mx, 0.12);
-      ry = lerp(ry, my, 0.12);
-      ring!.style.left = rx + 'px';
-      ring!.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
+    // Smooth rainbow color cycle on the star tip
+    let hue = 270;
+    function cycleColor() {
+      hue = (hue + 0.6) % 360;
+      if (starFill) starFill.setAttribute('fill', `hsl(${hue}, 85%, 75%)`);
+      const glowColor = `hsl(${hue}, 85%, 70%)`;
+      wand!.style.filter = `drop-shadow(0 0 5px ${glowColor}) drop-shadow(0 0 12px ${glowColor}33)`;
+      requestAnimationFrame(cycleColor);
     }
-    animRing();
+    requestAnimationFrame(cycleColor);
 
+    // Hover: wand tilts and glows brighter
     document.querySelectorAll('a, button, .badge, .project-card').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        dot!.style.transform = 'translate(-50%,-50%) scale(1.5)';
-        ring!.style.width = '44px';
-        ring!.style.height = '44px';
-        ring!.style.borderColor = 'rgba(249,168,212,0.7)';
+        wand.style.transform = 'translate(-10px, -10px) scale(1.35) rotate(-18deg)';
       });
       el.addEventListener('mouseleave', () => {
-        dot!.style.transform = 'translate(-50%,-50%) scale(1)';
-        ring!.style.width = '32px';
-        ring!.style.height = '32px';
-        ring!.style.borderColor = 'rgba(167,139,250,0.5)';
+        wand.style.transform = 'translate(-10px, -10px) scale(1) rotate(0deg)';
       });
     });
 
-    let lastTrail = 0;
-    function spawnTrail(x: number, y: number) {
+    // Sparkle trail
+    function spawnSpark(x: number, y: number) {
       const now = Date.now();
-      if (now - lastTrail < 40) return;
+      if (now - lastTrail < 55) return;
       lastTrail = now;
-      const d = document.createElement('div');
-      d.className = 'trail-dot';
-      d.style.left = x + 'px';
-      d.style.top = y + 'px';
-      d.style.background = Math.random() > 0.5 ? '#A78BFA' : '#F9A8D4';
-      document.body.appendChild(d);
-      setTimeout(() => d.remove(), 700);
+      const spark = document.createElement('div');
+      spark.className = 'trail-spark';
+      // Slight scatter around cursor
+      spark.style.left = (x + (Math.random() - 0.5) * 14) + 'px';
+      spark.style.top  = (y + (Math.random() - 0.5) * 14) + 'px';
+      spark.style.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      spark.textContent = SPARKLES[Math.floor(Math.random() * SPARKLES.length)];
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 850);
     }
   }
 
