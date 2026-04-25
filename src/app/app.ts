@@ -19,6 +19,7 @@ export class App {
         this.initTypewriter();
         this.initScrollAnimations();
         this.initCardTilt();
+        this.initConstellation();
         this.initEasterEgg();
       }
     });
@@ -209,6 +210,44 @@ export class App {
       });
       el.addEventListener('mouseenter', () => {
         el.style.transition = 'none';
+      });
+    });
+  }
+
+  private initConstellation() {
+    const svg = document.querySelector('.constellation-svg');
+    const section = document.getElementById('skills');
+    if (!svg || !section) return;
+
+    const lines = svg.querySelectorAll('.const-line');
+
+    // Draw lines in once section scrolls into view
+    const io = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      lines.forEach((line, i) => {
+        const delay = i * 55 + 150;
+        setTimeout(() => line.classList.add('drawn'), delay);
+      });
+    }, { threshold: 0.15 });
+    io.observe(section);
+
+    // Hover: brighten lines connected to hovered node
+    svg.querySelectorAll('.const-node').forEach(node => {
+      const nodeId = node.getAttribute('data-id') ?? '';
+
+      node.addEventListener('mouseenter', () => {
+        svg.querySelectorAll<SVGElement>(`.const-line[data-connects*="${nodeId}"]`).forEach(l => {
+          l.style.strokeOpacity = '0.75';
+          l.style.strokeWidth   = '2';
+        });
+      });
+
+      node.addEventListener('mouseleave', () => {
+        svg.querySelectorAll<SVGElement>(`.const-line[data-connects*="${nodeId}"]`).forEach(l => {
+          l.style.strokeOpacity = l.classList.contains('cross') ? '0.1' : '0.28';
+          l.style.strokeWidth   = '1';
+        });
       });
     });
   }

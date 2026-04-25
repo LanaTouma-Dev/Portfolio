@@ -465,46 +465,86 @@ section { position: relative; z-index: 1; }
 /* ─── SKILLS ─────────────────────────────────────── */
 #skills { background: var(--bg2); }
 
-.skills-layout {
-  margin-top: 60px; display: flex; flex-direction: column; gap: 40px;
+/* ── Constellation ── */
+.constellation-wrapper {
+  width: 100%; overflow-x: auto;
+  padding: 36px 0 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.constellation-wrapper::-webkit-scrollbar { display: none; }
+
+.constellation-svg {
+  display: block; min-width: 720px;
+  width: 100%; height: auto; overflow: visible;
 }
 
-.skill-group-name {
-  font-family: 'Space Grotesk', sans-serif; font-weight: 500;
-  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(232,224,255,0.35); margin-bottom: 16px;
+.const-cat {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  fill: rgba(232,224,255,0.25);
 }
-.skill-badges {
-  display: flex; flex-wrap: wrap; gap: 10px;
-}
-.badge {
-  font-family: 'Space Grotesk', sans-serif; font-weight: 600;
-  font-size: 0.78rem; letter-spacing: 0.05em;
-  padding: 8px 18px; border-radius: 100px;
-  border: 1px solid; cursor: default;
-  position: relative; overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  min-height: 36px; display: inline-flex; align-items: center;
-}
-.badge::after {
-  content: ''; position: absolute;
-  top: 0; left: -120%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.5s ease;
-}
-.badge:hover::after { left: 160%; }
-.badge:hover { transform: translateY(-3px) rotate(-1.5deg); box-shadow: 0 4px 20px rgba(167,139,250,0.25); }
-.badge:nth-child(even):hover { transform: translateY(-3px) rotate(1.5deg); }
 
-.badge-purple { color: var(--purple); border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); }
-.badge-purple:hover { box-shadow: 0 4px 20px rgba(167,139,250,0.25); }
-.badge-pink { color: var(--pink); border-color: rgba(249,168,212,0.3); background: rgba(249,168,212,0.07); }
-.badge-pink:hover { box-shadow: 0 4px 20px rgba(249,168,212,0.2); }
-.badge-blue { color: var(--blue); border-color: rgba(147,197,253,0.3); background: rgba(147,197,253,0.07); }
-.badge-blue:hover { box-shadow: 0 4px 20px rgba(147,197,253,0.2); }
-.badge-mint { color: var(--mint); border-color: rgba(110,231,183,0.3); background: rgba(110,231,183,0.07); }
-.badge-mint:hover { box-shadow: 0 4px 20px rgba(110,231,183,0.2); }
+/* Cluster lines — draw in via stroke-dashoffset */
+.const-line {
+  stroke-width: 1;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  stroke-opacity: 0;
+  transition: stroke-opacity 0.25s ease, stroke-width 0.2s ease;
+}
+.const-line.drawn {
+  animation: lineDrawIn 1.3s ease forwards;
+}
+
+@keyframes lineDrawIn {
+  to { stroke-dashoffset: 0; stroke-opacity: 0.28; }
+}
+
+/* Cross lines — fade in, no draw */
+.const-line.cross {
+  stroke-dasharray: 5 7;
+  stroke-dashoffset: 0;
+  stroke-opacity: 0;
+  animation: none;
+  transition: stroke-opacity 0.8s ease, stroke-width 0.2s ease;
+}
+.const-line.cross.drawn { stroke-opacity: 0.1; }
+
+/* Glow rings behind nodes */
+.const-glow-ring {
+  filter: blur(5px);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 0.38; }
+}
+
+/* Main node circles */
+.const-node .main {
+  animation: nodePulse 3s ease-in-out infinite;
+  transition: opacity 0.2s, r 0.2s;
+}
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.82; }
+  50%       { opacity: 1;    }
+}
+
+/* Node labels */
+.const-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  fill: rgba(232,224,255,0.55);
+  pointer-events: none;
+  transition: fill 0.2s;
+}
+
+/* Hover: highlight node + label */
+.const-node { cursor: default; }
+.const-node:hover .main         { opacity: 1; }
+.const-node:hover .const-glow-ring { opacity: 0.55; }
+.const-node:hover .const-label  { fill: rgba(232,224,255,0.95); }
 
 .currently-into {
   margin-top: 16px;
