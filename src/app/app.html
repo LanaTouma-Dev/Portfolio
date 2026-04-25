@@ -345,25 +345,21 @@
   <div class="section-inner">
     <div class="section-label">Selected work</div>
     <h2 class="section-heading">Some projects I'm <em>proud of</em></h2>
-    <div class="projects-grid">
+
+    <div class="projects-grid" [class.grid-expanded]="mobileExpanded()">
 
       <div class="project-card card-1" data-tilt>
         <img src="PromptOverflow1.png" alt="PromptOverflow screenshot" class="project-img" />
         <span class="project-tag tag-1">Community</span>
         <h3 class="project-title">PromptOverflow</h3>
-        <p class="project-desc">A developer community built around prompts. Share, fork, filter, and upvote the ones
-          that actually work, with threaded comments and a curation layer that keeps signal over noise.</p>
+        <p class="project-desc">A developer community built around prompts. Share, fork, filter, and upvote the ones that actually work, with threaded comments and a curation layer that keeps signal over noise.</p>
         <div class="project-stack">
           <span class="stack-pill">Angular</span>
           <span class="stack-pill">Django</span>
           <span class="stack-pill">Python</span>
         </div>
         <a href="https://github.com/LanaTouma-Dev/PromptVault" target="_blank" rel="noopener" class="project-link">
-          View project
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
+          View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
@@ -371,86 +367,92 @@
         <img src="pillpal1.jpg" alt="PillPal screenshot" class="project-img" />
         <span class="project-tag tag-2">Health</span>
         <h3 class="project-title">PillPal</h3>
-        <p class="project-desc">Built for ADHD brains. Ditches guilt-driven streaks in favour of a buddy system where
-          friends remind each other, and an anchor habit system that ties pill time to things you already do every day.
-        </p>
+        <p class="project-desc">Built for ADHD brains. Ditches guilt-driven streaks in favour of a buddy system where friends remind each other, and an anchor habit system that ties pill time to things you already do every day.</p>
         <div class="project-stack">
           <span class="stack-pill">Angular</span>
           <span class="stack-pill">Django</span>
           <span class="stack-pill">Python</span>
         </div>
         <a href="https://github.com/LanaTouma-Dev/PillTracker" target="_blank" rel="noopener" class="project-link">
-          View project
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
+          View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
-      <!-- BMS hidden for now
-      <div class="project-card card-3" data-tilt>
-        <img src="bms1.jpg" alt="BMS screenshot" class="project-img" />
-        <span class="project-tag tag-3">Enterprise</span>
-        <h3 class="project-title">BMS — Bulk Messaging System</h3>
-        <p class="project-desc">Production-grade messaging infrastructure deployed at Syriatel, Syria's largest mobile telecom. Built from scratch with 7+ role tiers, contract templates, and the scale to reach millions of subscribers.</p>
-        <div class="project-stack">
-          <span class="stack-pill">Angular</span>
-          <span class="stack-pill">Spring Boot</span>
-          <span class="stack-pill">Java</span>
-        </div>
-        <a href="#" class="project-link">
-          View project
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-      -->
-
-      <div class="project-card card-3" data-tilt>
+      <div class="project-card card-3 project-extra" data-tilt>
         <img src="unburnt1.jpg" alt="Unburnt screenshot" class="project-img" />
         <span class="project-tag tag-4">AI</span>
         <h3 class="project-title">Unburnt</h3>
-        <p class="project-desc">Turns out it's the games, not you. I trained a model on ROG forums, Reddit, and Steam
-          data to understand gamer burnout — tell it how you're feeling and it finds the game that fits the mood, not
-          the algorithm.</p>
+        <p class="project-desc">Turns out it's the games, not you. I trained a model on ROG forums, Reddit, and Steam data to understand gamer burnout — tell it how you're feeling and it finds the game that fits the mood, not the algorithm.</p>
         <div class="project-stack">
           <span class="stack-pill">Python</span>
           <span class="stack-pill">Angular</span>
           <span class="stack-pill">Custom ML Model</span>
         </div>
-        <a href="https://github.com/LanaTouma-Dev/Unburnt" class="project-link">
-          View project
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
+        <a href="https://github.com/LanaTouma-Dev/Unburnt" target="_blank" rel="noopener" class="project-link">
+          View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
-      <div class="project-card card-4" data-tilt>
+      <div class="project-card card-4 project-extra" data-tilt>
         <img src="QJ1.png" alt="Quest Journal screenshot" class="project-img" />
         <span class="project-tag tag-4">Fun</span>
-        <h3 class="project-title">Quest Journal- Task Tracker</h3>
-        <p class="project-desc">A gamified to-do list that turns daily tasks into quests. Complete tasks to level up
-          your character and earn badges. Features a sleek, magical girl-inspired interface and satisfying
-          micro-interactions to keep you motivated.</p>
+        <h3 class="project-title">Quest Journal</h3>
+        <p class="project-desc">A gamified to-do list that turns tasks into quests. Complete them to level up your character and earn badges, with a magical girl-inspired interface and satisfying micro-interactions.</p>
         <div class="project-stack">
           <span class="stack-pill">Angular</span>
           <span class="stack-pill">Django</span>
           <span class="stack-pill">Python</span>
         </div>
-        <a href="https://github.com/LanaTouma-Dev/magical-task-tracker" class="project-link">
-          View project
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
+        <a href="https://github.com/LanaTouma-Dev/magical-task-tracker" target="_blank" rel="noopener" class="project-link">
+          View project <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
     </div>
+
+    <!-- View More button -->
+    @if (!mobileExpanded()) {
+      <div class="view-more-wrap">
+        <button class="view-more-btn" (click)="handleViewMore()">
+          View more projects
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    }
+
   </div>
 </section>
+
+<!-- Projects modal (desktop: shows BMS) -->
+@if (moreOpen()) {
+  <div class="projects-modal-backdrop" (click)="closeMore()">
+    <div class="projects-modal-panel" (click)="$event.stopPropagation()">
+      <button class="modal-close-btn" (click)="closeMore()" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-label">More work</div>
+      <h3 class="modal-title">Enterprise projects</h3>
+      <p class="modal-subtitle">Production work I can't fully open-source, but can speak to in detail.</p>
+
+      <div class="modal-cards">
+        <div class="project-card card-bms modal-card">
+          <img src="bms1.jpg" alt="BMS screenshot" class="project-img" />
+          <span class="project-tag tag-3">Enterprise</span>
+          <h3 class="project-title">BMS — Bulk Messaging System</h3>
+          <p class="project-desc">Production-grade messaging infrastructure deployed at Syriatel, Syria's largest mobile telecom. Built from scratch with 7+ role tiers, contract templates, and the scale to reach millions of subscribers.</p>
+          <div class="project-stack">
+            <span class="stack-pill">Angular</span>
+            <span class="stack-pill">Spring Boot</span>
+            <span class="stack-pill">Java</span>
+          </div>
+          <span class="project-link muted-link">Private repo — ask me about it</span>
+        </div>
+      </div>
+    </div>
+  </div>
+}
 
 <!-- CONTACT -->
 <section id="contact">

@@ -9,6 +9,8 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class App {
   menuOpen = signal(false);
+  moreOpen = signal(false);
+  mobileExpanded = signal(false);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     afterNextRender(() => {
@@ -31,6 +33,18 @@ export class App {
 
   closeMenu() {
     this.menuOpen.set(false);
+  }
+
+  handleViewMore() {
+    if (window.innerWidth <= 768) {
+      this.mobileExpanded.set(true);
+    } else {
+      this.moreOpen.set(true);
+    }
+  }
+
+  closeMore() {
+    this.moreOpen.set(false);
   }
 
   private initPixelIcon() {
