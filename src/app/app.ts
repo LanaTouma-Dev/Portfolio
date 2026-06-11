@@ -1,5 +1,6 @@
 import { Component, signal, ViewEncapsulation, afterNextRender, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import * as THREE from 'three';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export class App {
         this.initCardTilt();
         this.initConstellation();
         this.initEasterEgg();
+        this.initBlob();
       }
     });
   }
@@ -264,6 +266,87 @@ export class App {
         });
       });
     });
+  }
+
+  private initBlob() {
+    const canvas = document.getElementById('hero-blob') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const SIZE = 400;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(SIZE, SIZE, false);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 50);
+    camera.position.z = 4.2;
+
+    const RADIUS = 1.25;
+    const geo = new THREE.SphereGeometry(RADIUS, 64, 64);
+    const posAttr = geo.getAttribute('position') as THREE.BufferAttribute;
+    const orig = (posAttr.array as Float32Array).slice();
+
+    const mat = new THREE.MeshPhongMaterial({
+      color: 0xA78BFA,
+      emissive: 0x2a0b5e,
+      specular: 0xF9A8D4,
+      shininess: 60,
+      transparent: true,
+      opacity: 0.95,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    scene.add(mesh);
+
+    const wire = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+      color: 0xF9A8D4, wireframe: true, transparent: true, opacity: 0.05,
+    }));
+    mesh.add(wire);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+    const pl1 = new THREE.PointLight(0xC4B5FD, 4, 16); pl1.position.set(4, 3, 4); scene.add(pl1);
+    const pl2 = new THREE.PointLight(0xF9A8D4, 2.6, 16); pl2.position.set(-4, -1, 3); scene.add(pl2);
+    const pl3 = new THREE.PointLight(0x6EE7B7, 1.4, 16); pl3.position.set(0, -4, -2); scene.add(pl3);
+
+    // Raw + smoothed pointer, normalized to [-1, 1] over the viewport
+    let targetX = 0, targetY = 0;
+    let smoothX = 0, smoothY = 0;
+    document.addEventListener('mousemove', (e: MouseEvent) => {
+      targetX = (e.clientX / window.innerWidth) * 2 - 1;
+      targetY = -((e.clientY / window.innerHeight) * 2 - 1);
+    });
+
+    const arr = posAttr.array as Float32Array;
+
+    const tick = (t: number) => {
+      requestAnimationFrame(tick);
+      const tt = t * 0.001;
+
+      // Ease the pointer so motion feels liquid, not jittery
+      smoothX += (targetX - smoothX) * 0.09;
+      smoothY += (targetY - smoothY) * 0.09;
+
+      // Gentle organic breathing — amplitudes kept small so it stays a rounded blob
+      const energy = 1 + Math.min(Math.hypot(targetX - smoothX, targetY - smoothY) * 5, 1.4);
+      for (let i = 0; i < arr.length; i += 3) {
+        const ox = orig[i], oy = orig[i + 1], oz = orig[i + 2];
+        const n =
+          Math.sin(ox * 1.5 + tt * 0.7) * Math.cos(oy * 1.5 - tt * 0.5) * 0.10 +
+          Math.sin(oy * 2.4 + tt * 0.9) * Math.cos(oz * 2.4 - tt * 0.6) * 0.05 +
+          Math.sin(oz * 3.6 + tt * 1.1) * 0.022;
+        const d = 1 + n * energy;
+        arr[i]     = ox * d;
+        arr[i + 1] = oy * d;
+        arr[i + 2] = oz * d;
+      }
+      posAttr.needsUpdate = true;
+      geo.computeVertexNormals();
+
+      // Slow auto-spin + lean toward the cursor (the part that reads as "reacting")
+      mesh.rotation.y = tt * 0.1 + smoothX * 1.5;
+      mesh.rotation.x = smoothY * 1.2 + Math.sin(tt * 0.3) * 0.08;
+      renderer.render(scene, camera);
+    };
+    requestAnimationFrame(tick);
   }
 
   private initEasterEgg() {
